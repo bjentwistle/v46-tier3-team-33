@@ -26,9 +26,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["https://vegilicious-frontend.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true,
+    origin: process.env.FRONTEND_HOST || "http://localhost:5173", // Allow only this origin
+    credentials: true, // Allow cookies
   })
 );
 
@@ -54,6 +53,10 @@ app.post(
 
 app.get("/product", jwtVerification, productListController);
 
-app.listen(8081, () => {
-  console.log("Server is Running");
+connect().then(() => {
+  // start the server
+  const PORT = process.env.BACK_PORT || 8081;
+  app.listen(PORT, () => {
+    console.log(`server running : http://localhost:${PORT}`);
+  });
 });
