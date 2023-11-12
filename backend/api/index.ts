@@ -33,29 +33,27 @@ app.use(
 );
 
 // declare a route with a response
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Server running");
 });
 
-app.get("/user", jwtVerification, getUserContextController);
+app.get("/api/user", jwtVerification, getUserContextController);
 
-app.post("/signup", emailCheck, passwordCheck, signup);
+app.post("/api/signup", emailCheck, passwordCheck, signup);
 
-app.post("/login", loginController);
+app.post("/api/login", loginController);
 
-app.post("/logout", logoutController);
+app.post("/api/logout", logoutController);
 
 app.post(
-  "/product",
+  "/api/product",
   jwtVerification,
   upload.single("picture"),
   productCreateController
 );
 
-app.get("/product", jwtVerification, productListController);
+app.get("/api/product", jwtVerification, productListController);
 
 app.listen(8081, () => {
   console.log(`server running`);
 });
-
-module.exports = app;
