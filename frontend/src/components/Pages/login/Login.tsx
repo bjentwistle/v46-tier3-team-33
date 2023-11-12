@@ -22,7 +22,7 @@ const LoginForm: React.FC = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8081/login", {
+      const response = await fetch("vegilicious-backend.vercel.app/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

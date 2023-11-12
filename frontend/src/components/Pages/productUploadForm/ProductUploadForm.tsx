@@ -78,7 +78,7 @@ export default function ProductUploadForm() {
     e.preventDefault();
     try {
       // API call
-      const response = await fetch("http://localhost:8081/product", {
+      const response = await fetch("vegilicious-backend.vercel.app/product", {
         method: "POST",
         credentials: "include",
         body: newFormData(),

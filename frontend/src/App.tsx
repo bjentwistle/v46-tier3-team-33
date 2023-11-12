@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const response = await fetch("http://localhost:8081/user", {
+        const response = await fetch("vegilicious-backend.vercel.app/user", {
           method: "GET",
           credentials: "include", // Ensures the request includes the cookie
         });
@@ -60,8 +60,14 @@ function App() {
               <Route path="/Help" element={<Help />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/PreSignup" element={<PreSignup />} />
-              <Route path="/SignUp/farmer" element={<SignUp isFarmer={true} />} />
-              <Route path="/SignUp/customer" element={<SignUp isFarmer={false}/>} />
+              <Route
+                path="/SignUp/farmer"
+                element={<SignUp isFarmer={true} />}
+              />
+              <Route
+                path="/SignUp/customer"
+                element={<SignUp isFarmer={false} />}
+              />
               <Route path="/Upload" element={<ProductUploadForm />} />
             </Routes>
           </div>
