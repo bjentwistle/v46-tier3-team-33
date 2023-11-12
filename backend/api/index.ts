@@ -57,3 +57,5 @@ app.get("/product", jwtVerification, productListController);
 app.listen(8081, () => {
   console.log(`server running`);
 });
+
+module.exports = app;
