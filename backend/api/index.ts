@@ -26,8 +26,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.FRONTEND_HOST || "http://localhost:5173", // Allow only this origin
-    credentials: true, // Allow cookies
+    origin: [""],
+    methods: ["POST", "GET"],
+    credentials: true,
   })
 );
 
@@ -53,10 +54,6 @@ app.post(
 
 app.get("/product", jwtVerification, productListController);
 
-connect().then(() => {
-  // start the server
-  const PORT = process.env.BACK_PORT || 8081;
-  app.listen(PORT, () => {
-    console.log(`server running : http://localhost:${PORT}`);
-  });
+app.listen(8081, () => {
+  console.log(`server running`);
 });
