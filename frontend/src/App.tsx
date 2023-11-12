@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const validateToken = async () => {
       try {
-        const response = await fetch("vegilicious-backend.vercel.app/user", {
+        const response = await fetch("backend-omega-sand.vercel.app/user", {
           method: "GET",
           credentials: "include", // Ensures the request includes the cookie
         });
